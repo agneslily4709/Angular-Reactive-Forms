@@ -1,0 +1,71 @@
+<nav class="navbar">
+        <h1>Registration Form - Reactive</h1>
+</nav>
+<div class="container">
+        <div class="paper">
+                <form class="form-component" [formGroup]="userObj">
+                        <mat-form-field class="form_field">
+                                <mat-label>Name</mat-label>
+                                <input type="text" matInput name="name" required formControlName="name"/>
+                                <mat-error *ngIf="userObj.get('name')?.invalid && (userObj.get('name')?.dirty || userObj.get('name')?.touched)">
+                                        <small>Name is required</small>
+                                </mat-error>
+                        </mat-form-field>
+                      <mat-form-field class="form_field">
+                                <mat-label>Email</mat-label>
+                                <input type="email" matInput name="email" formControlName="email" required/>
+                                <mat-error *ngIf="userObj.get('email')?.invalid && (userObj.get('email')?.dirty || userObj.get('email')?.touched)">
+                                        <small>Email is required</small>
+                                      </mat-error>                                      
+                              </mat-form-field>
+                              
+                              <mat-form-field class="form_field">
+                                <mat-label>Password</mat-label>
+                                <input type="password" matInput name="password" formControlName="password" required />
+                                <mat-error *ngIf="userObj.get('password')?.invalid && (userObj.get('password')?.dirty || userObj.get('password')?.touched)">
+                                        <small *ngIf="userObj.get('password')?.errors?.['required']">Password is required</small>
+                              </mat-error>
+                              </mat-form-field>                                      
+                             
+                              <mat-form-field class="form_field">
+                                <mat-label>Phone</mat-label>
+                                <input type="tel" matInput name="phone" formControlName="phone" required pattern="[0-9]{10}"/>
+                                <mat-error *ngIf="userObj.get('phone')?.invalid && (userObj.get('phone')?.dirty || userObj.get('phone')?.touched)">
+                                  <small *ngIf="userObj.get('phone')?.errors?.['required']">Phone is required</small>
+                                  <small *ngIf="userObj.get('phone')?.errors?.['pattern']">Phone contains 10 digits</small>
+                                </mat-error>
+                              </mat-form-field>
+
+                              <mat-radio-group formControlName="gender" name="gender" required>
+                                <mat-label>Gender</mat-label>
+                                <mat-radio-button value="male">Male</mat-radio-button>
+                                <mat-radio-button value="female">Female</mat-radio-button>
+                                <mat-error *ngIf="userObj.get('gender')?.invalid && (userObj.get('gender')?.dirty || userObj.get('gender')?.touched)">
+                                  <small>Select a gender</small>
+                                </mat-error>
+                              </mat-radio-group>
+                              
+                              <mat-form-field class="form_field">
+                                <mat-label>Country</mat-label>
+                                <mat-select name="country" formControlName="country" required>
+                                  <mat-option value="us">United States</mat-option>
+                                  <mat-option value="ca">Canada</mat-option>
+                                  <mat-option value="uk">United Kingdom</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="userObj.get('country')?.invalid && (userObj.get('country')?.dirty || userObj.get('country')?.touched)">
+                                  <span *ngIf="userObj.get('country')?.errors?.['required']">Country is required</span>
+                                </mat-error>
+                              </mat-form-field>
+                              
+                              <mat-checkbox name="agreeToTC" formControlName="agreeToTC">Agree To Terms & Conditions</mat-checkbox>
+
+                        <button color="accent" mat-raised-button type="submit">Submit</button>
+                </form>
+        </div>
+        <div class="paper info">
+                <h1>User Details</h1>
+                <div  class="user-obj" *ngFor="let entry of userObj.value | keyvalue">
+                        <p>{{ entry.key }}: {{ entry.value }}</p>
+                </div>       
+        </div>
+</div>

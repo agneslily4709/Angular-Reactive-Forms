@@ -1,0 +1,40 @@
+.container{
+        display: grid;
+        grid-template-columns: 65% 35%;
+        background-color: #d8d3d3;
+        height: 90vh;       
+}
+.navbar{
+        text-align: center;
+        background-color: darkblue;
+        color: #d8d3d3;
+        padding: 10px;
+}
+.paper{
+        background-color: #f3f3f3;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+        padding: 2rem;
+        border-radius: 2rem;
+        margin: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+}
+.form-component{
+        display: flex;
+        flex-direction: column;
+}
+.mat-mdc-form-field-infix{
+        min-height: 28px;
+}
+.md-input.ng-invalid.ng-dirty {
+        border-color: #FA787E;
+    }
+.md-input.ng-valid.ng-dirty {
+        border-color: #78FA89;
+}
+.user-obj{
+        display: flex;
+        flex-direction: row;
+        gap: 3rem;
+}
